@@ -19,7 +19,6 @@ df['Days'] = (df['Date'] - df['Date'].min()).dt.days
 x = df['Days'].values
 y = df['Revenue_USD'].values
 
-# Lineáris illesztés (elsőfokú polinom)
 slope, intercept = np.polyfit(x, y, 1)
 df['Linear_Trend'] = slope * x + intercept
 
@@ -33,14 +32,13 @@ df['Exponential_Trend'] = a * np.exp(b * x)
 
 print(f"Exponenciális egyenlet: y = {a:.2f} * e^({b:.4f}x)")
 
-# MSE = Átlag((Tényleges - Becsült)^2)
+
 mse_linear = np.mean((df['Revenue_USD'] - df['Linear_Trend'])**2)
 mse_exponential = np.mean((df['Revenue_USD'] - df['Exponential_Trend'])**2)
 
 print(f"Lineáris MSE: {mse_linear:,.2f}")
 print(f"Exponenciális MSE: {mse_exponential:,.2f}")
 
-# Győztes hirdetése
 if mse_linear < mse_exponential:
     print("A Lineáris trend a pontosabb.")
 else:

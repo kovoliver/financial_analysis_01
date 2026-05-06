@@ -1,17 +1,3 @@
-"""
-    Veszem a target col értékét, kiszámolom az átlagot.
-
-    Külső szórás megvalósítása:
-        - csoportosítok a megfelelő ismérv szerint (Region)
-        - kiszámolom az átlagokat az ismérv és target col szerint
-        - (db a kategóriában) * (kategória értéke - átlag) ** 2
-
-    Belső szórás megvalósítása:
-        - simán csak a target_col szerint számolom a varianciát
-
-    A kettőt elosztom egymással.
-"""
-
 def variance_ratio(df, group, target_col):
     grand_mean = df[target_col].mean()
 
